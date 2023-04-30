@@ -30,7 +30,7 @@ const App = () => {
       return alert(`${name} is already in contacts`);
     }
     
-    setContacts(() => ([{ name, number, id: nanoid() }, ...contacts]));
+    setContacts((prevContacts) => ([{ name, number, id: nanoid() }, ...prevContacts]));
   };
 
   const handleFilterChange = event => {
@@ -46,7 +46,7 @@ const App = () => {
   };
 
   const deleteContact = contactId => {
-    setContacts(contacts.filter(contact => contact.id !== contactId));
+    setContacts((prevContacts) => prevContacts.filter(contact => contact.id !== contactId));
   };
 
   return (
